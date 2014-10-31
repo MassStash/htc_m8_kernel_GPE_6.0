@@ -1,4 +1,4 @@
-/*Qualcomm Secure Execution Environment Communicator (QSEECOM) driver
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														/*Qualcomm Secure Execution Environment Communicator (QSEECOM) driver
  *
  * Copyright (c) 2012-2014, The Linux Foundation. All rights reserved.
  *
@@ -7,13 +7,13 @@
  * only version 2 as published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of																												
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
 
 #define pr_fmt(fmt) "QSEECOM: %s: " fmt, __func__
-
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
 #include <linux/kernel.h>
 #include <linux/slab.h>
 #include <linux/module.h>
@@ -1031,7 +1031,7 @@ static int qseecom_load_app(struct qseecom_dev_handle *data, void __user *argp)
 		entry->ref_cnt = 1;
 		strlcpy(entry->app_name, load_img_req.img_name,
 					MAX_APP_NAME_SIZE);
-		
+
 		if (!IS_ERR_OR_NULL(ihandle))
 			ion_free(qseecom.ion_clnt, ihandle);
 
