@@ -2956,6 +2956,12 @@ static void venus_hfi_pm_hndlr(struct work_struct *work)
 err_power_off:
 skip_power_off:
 
+	/*
+	* When power collapse is escaped, driver no need to inform Venus.
+	* Venus is self-sufficient to come out of the power collapse at
+	* any stage. Driver can skip power collapse and continue with
+	* normal execution.
+	*/
 
 	
 	cancel_delayed_work(&venus_hfi_pm_work);
