@@ -88,3 +88,4 @@ obj-$(CONFIG_TOUCHSCREEN_ONE_LAYER_HIMAX)	+= himax_852xD_2T3R_layer.o
 obj-$(CONFIG_TOUCHSCREEN_HIMAX_ES)		+= himax_852xES.o himax_platform.o
 obj-$(CONFIG_TOUCHSCREEN_HIMAX)			+= himax_852xD.o
 obj-$(CONFIG_TOUCHSCREEN_GT9XX)		+= gt9xx/
+obj-y += touchboost.o
