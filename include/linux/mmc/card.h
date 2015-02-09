@@ -297,6 +297,9 @@ enum mmc_pon_type {
 	MMC_LONG_PON = 1,
 	MMC_SHRT_PON,
 };
+/*
+ * MMC device
+ */
 struct mmc_card {
 	struct mmc_host		*host;		
 	struct device		dev;		
@@ -631,4 +634,4 @@ extern struct mmc_wr_pack_stats *mmc_blk_get_packed_statistics(
 extern void mmc_blk_init_packed_statistics(struct mmc_card *card);
 extern void mmc_blk_disable_wr_packing(struct mmc_queue *mq);
 extern int mmc_send_pon(struct mmc_card *card);
-#endif 
+#endif /* LINUX_MMC_CARD_H */
