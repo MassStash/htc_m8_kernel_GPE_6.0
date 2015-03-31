@@ -65,6 +65,7 @@ static int sd_queue_thread(void *d)
 {
 	struct mmc_queue *mq = d;
 	struct request_queue *q = mq->queue;
+	struct mmc_card *card = mq->card;
 
 	current->flags |= PF_MEMALLOC;
 	if (card->host->wakeup_on_idle)
@@ -500,6 +501,7 @@ int mmc_init_queue(struct mmc_queue *mq, struct mmc_card *card,
 		ret = PTR_ERR(mq->thread);
 		goto free_bounce_sg;
 	}
+
 	return 0;
  free_bounce_sg:
 	if (mqrq_cur->bounce_sg)
