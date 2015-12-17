@@ -169,34 +169,6 @@ static int _check_context_queue(struct adreno_context *drawctxt)
 }
 
 /**
- * adreno_dispatcher_get_cmdbatch() - Get a new command from a context queue
- * @drawctxt: Pointer to the adreno draw context
- *
- * Dequeue a new command batch from the context list
- */
-static inline struct kgsl_cmdbatch *adreno_dispatcher_get_cmdbatch(
-		struct adreno_context *drawctxt)
-{
-	int ret;
-
-	spin_lock(&drawctxt->lock);
-
-	/*
-	 * Wake up if there is room in the context or if the whole thing got
-	 * invalidated while we were asleep
-	 */
-
-	if (drawctxt->state == ADRENO_CONTEXT_STATE_INVALID)
-		ret = 1;
-	else
-		ret = drawctxt->queued < _context_cmdqueue_size ? 1 : 0;
-
-	spin_unlock(&drawctxt->lock);
-
-	return ret;
-}
-
-/**
  * _retire_marker() - Retire a marker command batch without sending it to the
  * hardware
  * @cmdbatch: Pointer to the cmdbatch to retire
