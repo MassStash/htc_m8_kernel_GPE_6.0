@@ -60,20 +60,6 @@ static inline void arch_timer_evtstrm_enable(int divider)
 			| ARCH_TIMER_VIRT_EVT_EN;
 	arch_timer_set_cntkctl(cntkctl);
 	elf_hwcap |= HWCAP_EVTSTRM;
-
-static inline void __cpuinit arch_counter_set_user_access(void)
-{
-	u32 cntkctl;
-
-	asm volatile("mrc p15, 0, %0, c14, c1, 0" : "=r" (cntkctl));
-
-	/* disable user access to everything */
-	cntkctl &= ~((3 << 8) | (7 << 0));
-
-	/* Enable user access to the virtual counter */
-	cntkctl |= (1 << 1);
-
-	asm volatile("mcr p15, 0, %0, c14, c1, 0" : : "r" (cntkctl));
 }
 #else
 static inline int arch_timer_register(struct arch_timer *at)
